@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selección de Vocho</title>
+    <style>
+        .Texto{
+            font: small-caps 100%/200% serif;
+        }
+        .container{
+            text-align: center;
+        }
+        .opciones{
+            background-color: rgb(255, 201, 248);
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .color-opcion{
+            display: inline-block;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .color-circle{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid rgb(12, 12, 12);
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-color: white;
+        }
+        .color-circle.clicked {
+            background-color: blue;
+        }
+        .color-name {
+            display: inline-block;
+            margin-left: 5px;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+   
+</head>
+<body class="Texto">
+    <form class="container">
+        <img id="cambiar-bocho" src="bocho_rojo.jpg" alt="">
+        <h2></h2>
+        <div class="opciones">
+            <div class="color-opcion" onclick="cambiarColorA('rojo')">
+                <div class="color-circle"></div>
+                <span class="color-name">Rojo</span>
+            </div>
+            <div class="color-opcion" onclick="cambiarColorA('azul')">
+                <div class="color-circle"></div>
+                <span class="color-name">Azul</span>
+            </div>
+            <div class="color-opcion" onclick="cambiarColorA('amarillo')">
+                <div class="color-circle"></div>
+                <span class="color-name">Amarillo</span>
+            </div>
+            <div class="color-opcion" onclick="cambiarColorA('blanco')">
+                <div class="color-circle"></div>
+                <span class="color-name">Blanco</span>
+            </div>
+        </div>
+    </form>
+    <script>
+        function cambiarColorA(color){
+            document.getElementById("cambiar-bocho").src = "bocho_" + color + ".jpg";
+        }
+        const circles = document.querySelectorAll('.color-circle');
+        circles.forEach(circle => {
+            circle.addEventListener('click', () => {
+                circles.forEach(c => {
+                    c.classList.remove('clicked');
+                });
+                circle.classList.add('clicked');
+            });
+        });
+    </script> 
+</body>
+</html>
